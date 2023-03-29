@@ -13,8 +13,9 @@ function App() {
 
   return (
     <div>
-      <h1>Welcome to DiscKatie (Not affiliated with Discogs)</h1>
+      <h1>Welcome to DiscKatie!</h1>
       <p>Yes, this is my personal record collection</p>
+      <p>Not affiliated with Discogs...</p>
       <GenreList genres={genres}/>
     </div>
   );

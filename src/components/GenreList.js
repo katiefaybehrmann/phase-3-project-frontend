@@ -1,10 +1,11 @@
 import React from "react";
+import GenreCard from "./GenreCard";
 
-function GenreList(){
+function GenreList({genres}){
 
     return(
         <div>
-            <p>Poop</p>
+            {genres.map(genre => <GenreCard key={genre.id} genre={genre}/>)}
         </div>
     )
 }
