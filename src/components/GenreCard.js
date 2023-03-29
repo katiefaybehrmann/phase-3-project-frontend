@@ -1,10 +1,11 @@
 import React from "react";
 
-function GenreCard(){
+function GenreCard({genre}){
 
     return(
         <div>
-            <p>hi</p>
+            <h1>{genre.name}</h1>
+            <h2>{genre.description}</h2>
         </div>
     )
 }
