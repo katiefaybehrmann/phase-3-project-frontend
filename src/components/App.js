@@ -11,6 +11,10 @@ function App() {
       .then((genres) => setGenres(genres));
   }, []);
 
+  function handleAddGenre(newGenre){
+    setGenres([...genres, newGenre])
+  }
+
   return (
     <div>
       <h1>Welcome to DiscKatie!</h1>

@@ -4,7 +4,7 @@ function RecordCard({record}){
 
     return (
         <div>
-            <h3>{record.artist}</h3>
+            <h3>{record.artist}, {record.release_date}</h3>
         </div>
     )
 }
