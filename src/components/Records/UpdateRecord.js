@@ -72,7 +72,6 @@ function UpdateRecord({record, onUpdateRecord}){
                 <br />
                 <button type="submit">Update Record</button>
             </form>
-            {/* <button onClick={onUpdateRecord}>reset in the meantime</button> */}
         </div>
     )
 }

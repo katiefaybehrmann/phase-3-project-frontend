@@ -35,6 +35,14 @@ function App() {
     setGenres(updatedGenres)
   }
 
+  const handleDeleteRecord = (deletedRecord) => {
+    const currentGenre = genres.find(g => g.id === deletedRecord.genre_id)
+    const updatedRecords = currentGenre.records.filter(r => r.id !== deletedRecord.id)
+    const updatedGenre = {...currentGenre, records: updatedRecords}
+    const updatedGenres = genres.map(g => g.id == currentGenre.id ? updatedGenre : g)
+    setGenres(updatedGenres)
+  }
+
   return (
     <div>
       <div>
@@ -52,7 +60,7 @@ function App() {
       </ul>
       <Link to='/genres/add'>Add a Genre!</Link>
       <Routes>
-          <Route path="/genres/:genre_id" element={<GenreContainer genres={genres} onAddRecord={handleAddRecord} onUpdateRecord={handleUpdateRecord}/>} />
+          <Route path="/genres/:genre_id" element={<GenreContainer genres={genres} onAddRecord={handleAddRecord} onUpdateRecord={handleUpdateRecord} onDeleteRecord={handleDeleteRecord}/>} />
           <Route path="/genres/add" element={<AddGenre onAddGenre={handleAddGenre}/>}/>
       </Routes>
     </div>

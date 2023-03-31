@@ -2,12 +2,20 @@ import React from "react";
 import { useState } from "react";
 import UpdateRecord from "./UpdateRecord";
 
-function RecordCard({ record, onUpdateRecord }) {
+function RecordCard({ record, onUpdateRecord, onDeleteRecord }) {
     const [isEditing, setIsEditing] = useState(false)
 
     const handleUpdateRecord = (updatedRecord) => {
         setIsEditing(false)
         onUpdateRecord(updatedRecord)
+    }
+
+    const handleDeleteClick = () => {
+        fetch(`http://localhost:9292/genres/${record.genre_id}/records/${record.id}`, {
+            method: "DELETE",
+          });
+
+          onDeleteRecord(record)
     }
 
 
@@ -24,7 +32,7 @@ function RecordCard({ record, onUpdateRecord }) {
                                 ✏️
                             </span>
                         </button>
-                        <button >
+                        <button onClick={handleDeleteClick}>
                             <span role="img" aria-label="delete">
                                 🗑
                             </span>

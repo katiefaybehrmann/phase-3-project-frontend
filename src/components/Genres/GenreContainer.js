@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import RecordCard from "../Records/RecordCard";
 import AddRecord from "../Records/AddRecord";
 
-function GenreContainer({genres, onAddRecord, onUpdateRecord}){
+function GenreContainer({genres, onAddRecord, onUpdateRecord, onDeleteRecord}){
   let {genre_id} = useParams();
   const displayedGenre = genres.find(g => g.id == genre_id)
 
@@ -11,7 +11,7 @@ function GenreContainer({genres, onAddRecord, onUpdateRecord}){
     return(
         <div>
           <h1>{displayedGenre.name}: {displayedGenre.description}</h1>
-            {displayedGenre.records.map(r => <RecordCard key={r.id} record={r} onUpdateRecord={onUpdateRecord}/>)}
+            {displayedGenre.records.map(r => <RecordCard key={r.id} record={r} onUpdateRecord={onUpdateRecord} onDeleteRecord={onDeleteRecord}/>)}
             <AddRecord onAddRecord={onAddRecord} displayedGenre={displayedGenre}/>
         </div>
     )

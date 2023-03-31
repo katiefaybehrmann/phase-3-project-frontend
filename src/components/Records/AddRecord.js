@@ -38,7 +38,7 @@ function AddRecord({ onAddRecord, displayedGenre }) {
 
     return (
         <div>
-            <h2>Add a Record</h2>
+            <h2>Add a {displayedGenre.name} Record</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     placeholder="Artist"
