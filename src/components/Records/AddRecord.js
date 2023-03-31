@@ -8,7 +8,7 @@ function AddRecord({ onAddRecord, displayedGenre }) {
     const [listened, setListened] = useState(false)
     const [rating, setRating] = useState("")
 
-    function handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault()
         fetch(`http://localhost:9292/genres/${displayedGenre.id}/records`, {
             method: "POST",
@@ -28,7 +28,7 @@ function AddRecord({ onAddRecord, displayedGenre }) {
         clearForm();
     }
 
-    function clearForm() {
+    const clearForm = () => {
         setArtist("")
         setReleaseDate("")
         setImageURL("")

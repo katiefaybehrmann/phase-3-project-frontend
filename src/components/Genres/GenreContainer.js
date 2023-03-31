@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import GenreCard from "./GenreCard";
+import RecordCard from "../Records/RecordCard";
+import AddRecord from "../Records/AddRecord";
 
 function GenreContainer({genres, onAddRecord}){
   let {genre_id} = useParams();
@@ -9,7 +10,9 @@ function GenreContainer({genres, onAddRecord}){
 
     return(
         <div>
-          <GenreCard displayedGenre={displayedGenre} onAddRecord={onAddRecord}/>
+          <h1>{displayedGenre.name}: {displayedGenre.description}</h1>
+            {displayedGenre.records.map(r => <RecordCard key={r.id} record={r}/>)}
+            <AddRecord onAddRecord={onAddRecord} displayedGenre={displayedGenre}/>
         </div>
     )
 }

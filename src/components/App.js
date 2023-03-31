@@ -33,9 +33,10 @@ function App() {
     <div>
       <div>
       <h1>Welcome to DisKatie!</h1>
-      <p>Yes, this is my personal record collection</p>
-      <p>Not affiliated with Discogs...</p>
+      <p>Yes, this is my personal record collection. Not affiliated with Discogs...</p>
+      <p>Search by Genre</p>
     </div>
+    <Link to='/'>Home</Link>
     <ul>
         {genres.map((g) => (
           <li key={g.id}>
