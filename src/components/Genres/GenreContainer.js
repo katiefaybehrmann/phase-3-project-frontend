@@ -7,7 +7,6 @@ function GenreContainer({genres, onAddGenre}){
 
     return(
         <div>
-            <p>Genre Container!</p>
             <GenreList genres={genres}/>
             <AddGenre onAddGenre={onAddGenre}/>
         </div>
