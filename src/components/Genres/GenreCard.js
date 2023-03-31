@@ -1,10 +1,10 @@
 import React from "react";
 
-function GenreCard({genre, records}){
+function GenreCard({displayedGenre}){
 
     return(
         <div>
-            <h1>{genre.name}: {genre.description}</h1>
+            <h1>{displayedGenre.name}: {displayedGenre.description}</h1>
     
         </div>
     )

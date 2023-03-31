@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function AddRecord({ genres, genreRecords, setGenreRecords }) {
+function AddRecord({ genres }) {
     const [artist, setArtist] = useState("")
     const [release_date, setReleaseDate] = useState("")
     const [image_url, setImageURL] = useState("")
@@ -11,8 +11,6 @@ function AddRecord({ genres, genreRecords, setGenreRecords }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        const currentGenre = genres.find(obj => obj.id == e.target.genre_id)
-        setGenreRecords(currentGenre)
         fetch("http://localhost:9292/records", {
             method: "POST",
             headers: {

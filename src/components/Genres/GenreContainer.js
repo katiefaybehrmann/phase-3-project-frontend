@@ -1,14 +1,15 @@
 import React from "react";
-import GenreList from "./GenreList";
-import AddGenre from "./AddGenre";
+import { useParams } from "react-router-dom";
+import GenreCard from "./GenreCard";
 
 function GenreContainer({genres, onAddGenre}){
+  let {genre_id} = useParams();
+  const displayedGenre = genres.find(g => g.id == genre_id)
 
 
     return(
         <div>
-            <GenreList genres={genres}/>
-            <AddGenre onAddGenre={onAddGenre}/>
+          <GenreCard displayedGenre={displayedGenre}/>
         </div>
     )
 }
