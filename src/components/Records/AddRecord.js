@@ -1,44 +1,45 @@
 import React from "react";
 import { useState } from "react";
 
-function AddRecord({genres}) {
+function AddRecord({ genres, genreRecords, setGenreRecords }) {
     const [artist, setArtist] = useState("")
     const [release_date, setReleaseDate] = useState("")
     const [image_url, setImageURL] = useState("")
     const [listened, setListened] = useState(false)
     const [rating, setRating] = useState("")
     const [genre_id, setGenreID] = useState('')
-    // const [recordGenre, setRecordGenre] = useState()
 
-    function handleSubmit(e){
+    function handleSubmit(e) {
         e.preventDefault()
+        const currentGenre = genres.find(obj => obj.id == e.target.genre_id)
+        setGenreRecords(currentGenre)
         fetch("http://localhost:9292/records", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            "artist": artist,
-            "release_date": release_date,
-            "image_url": image_url,
-            "listened": listened,
-            "rating": rating,
-            "genre_id": genre_id
-          })
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "artist": artist,
+                "release_date": release_date,
+                "image_url": image_url,
+                "listened": listened,
+                "rating": rating,
+                "genre_id": genre_id
+            })
         })
-          .then(r => r.json())
-          .then(p => console.log(p))
-          clearForm();
+            .then(r => r.json())
+            .then(p => console.log(p))
+        clearForm();
     }
 
-    function clearForm(){
+    function clearForm() {
         setArtist("")
         setReleaseDate("")
         setImageURL("")
         setListened(false)
         setRating("")
         setGenreID("")
-      }
+    }
 
     return (
         <div>

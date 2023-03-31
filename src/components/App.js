@@ -15,8 +15,16 @@ function App() {
       .then((genres) => setGenres(genres));
   }, []);
 
-  function handleAddGenre(newGenre){
+  const handleAddGenre = (newGenre) => {
     setGenres([...genres, newGenre])
+  }
+
+  const handleAddRecord = (newRecord) => {
+      const currentGenre = genres.find(genre => genre.id == newRecord.genre_id)
+       const updatedRecords = [...currentGenre.records, newRecord]
+       const updatedGenre = {...currentGenre, records: updatedRecords}
+       const updatedGenres = genres.map(g => g.id == currentGenre.id ? updatedGenre : g)
+      setGenres(updatedGenres)
   }
 
   return (
@@ -29,7 +37,7 @@ function App() {
       <NavBar/>
       <Routes>
           <Route path="/genres" element={<GenreContainer genres={genres} onAddGenre={handleAddGenre}/>} />
-          <Route path="/records" element={<RecordContainer genres={genres}/>} />
+          <Route path="/records" element={<RecordContainer genres={genres} />} />
       </Routes>
     </div>
 
