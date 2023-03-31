@@ -1,7 +1,8 @@
 //import './App.css';
-import { Route, Routes, Link, useParams } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import GenreContainer from './Genres/GenreContainer';
 import { useState, useEffect } from "react";
+import AddGenre from "./Genres/AddGenre";
 
 
 function App() {
@@ -42,8 +43,10 @@ function App() {
           </li>
         ))}
       </ul>
+      <Link to='/genres/add'>Add a Genre!</Link>
       <Routes>
-          <Route path="/genres/:genre_id" element={<GenreContainer genres={genres} onAddGenre={handleAddGenre}/>} />
+          <Route path="/genres/:genre_id" element={<GenreContainer genres={genres} onAddRecord={handleAddRecord}/>} />
+          <Route path="/genres/add" element={<AddGenre onAddGenre={handleAddGenre}/>}/>
       </Routes>
     </div>
 

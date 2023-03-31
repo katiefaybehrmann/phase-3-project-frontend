@@ -1,17 +1,16 @@
 import React from "react";
 import { useState } from "react";
 
-function AddRecord({ genres }) {
+function AddRecord({ onAddRecord }) {
     const [artist, setArtist] = useState("")
     const [release_date, setReleaseDate] = useState("")
     const [image_url, setImageURL] = useState("")
     const [listened, setListened] = useState(false)
     const [rating, setRating] = useState("")
-    const [genre_id, setGenreID] = useState('')
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch("http://localhost:9292/records", {
+        fetch("http://localhost:9292/genres/:genre_id/records", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -22,11 +21,10 @@ function AddRecord({ genres }) {
                 "image_url": image_url,
                 "listened": listened,
                 "rating": rating,
-                "genre_id": genre_id
             })
         })
             .then(r => r.json())
-            .then(p => console.log(p))
+            .then(p => onAddRecord(p))
         clearForm();
     }
 
@@ -36,7 +34,6 @@ function AddRecord({ genres }) {
         setImageURL("")
         setListened(false)
         setRating("")
-        setGenreID("")
     }
 
     return (
@@ -82,10 +79,6 @@ function AddRecord({ genres }) {
                     onChange={(e) => setRating(e.target.value)}
                 />
                 <br />
-                <label for="genre_id">Choose a genre</label>
-                <select value={genre_id} name="genre_id" id="genre_id" onChange={(e) => setGenreID(e.target.value)}>
-                    {genres.map(genre => <option value={genre.id}>{genre.name}</option>)}
-                </select>
                 <button type="submit">Submit</button>
             </form>
         </div>
