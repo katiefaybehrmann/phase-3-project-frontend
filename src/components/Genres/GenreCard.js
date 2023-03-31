@@ -1,5 +1,5 @@
 import React from "react";
-import RecordCard from "./RecordCard";
+import RecordCard from "../RecordCard";
 
 function GenreCard({genre}){
 
