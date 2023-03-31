@@ -9,7 +9,7 @@ function GenreContainer({genres, onAddGenre}){
 
     return(
         <div>
-          <GenreCard displayedGenre={displayedGenre}/>
+          <GenreCard displayedGenre={displayedGenre} />
         </div>
     )
 }
