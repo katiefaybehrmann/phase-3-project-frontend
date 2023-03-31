@@ -5,7 +5,9 @@ function GenreList({genres}){
 
     return(
         <div>
-            {genres.map(genre => <GenreCard key={genre.id} genre={genre} records={genre.records}/>)}
+            {genres.map(genre => 
+            <GenreCard key={genre.id} genre={genre} records={genre.records}/>
+            )}
         </div>
     )
 }

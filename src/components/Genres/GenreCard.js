@@ -1,6 +1,6 @@
 import React from "react";
 
-function GenreCard({genre}){
+function GenreCard({genre, records}){
 
     return(
         <div>
