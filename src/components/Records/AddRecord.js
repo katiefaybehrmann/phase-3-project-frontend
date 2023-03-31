@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function AddRecord({ onAddRecord }) {
+function AddRecord({ onAddRecord, displayedGenre }) {
     const [artist, setArtist] = useState("")
     const [release_date, setReleaseDate] = useState("")
     const [image_url, setImageURL] = useState("")
@@ -10,7 +10,7 @@ function AddRecord({ onAddRecord }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        fetch("http://localhost:9292/genres/:genre_id/records", {
+        fetch(`http://localhost:9292/genres/${displayedGenre.id}/records`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

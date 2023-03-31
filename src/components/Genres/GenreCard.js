@@ -8,7 +8,7 @@ function GenreCard({displayedGenre, onAddRecord}){
         <div>
             <h1>{displayedGenre.name}: {displayedGenre.description}</h1>
             {displayedGenre.records.map(r => <RecordCard key={r.id} record={r}/>)}
-            <AddRecord onAddRecord={onAddRecord}/>
+            <AddRecord onAddRecord={onAddRecord} displayedGenre={displayedGenre}/>
         </div>
     )
 }
