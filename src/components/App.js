@@ -3,17 +3,10 @@ import { Route, Routes, Router } from "react-router-dom";
 import NavBar from './Shared/NavBar';
 import GenreContainer from './Genres/GenreContainer';
 import RecordContainer from './Records/RecordContainer';
-import Header from './Shared/Header';
 
 
 function App() {
-  // const [genres, setGenres] = useState([])
 
-  // useEffect(() => {
-  //   fetch("http://localhost:9292/genres")
-  //     .then((r) => r.json())
-  //     .then((genres) => setGenres(genres));
-  // }, []);
 
   // function handleAddGenre(newGenre){
   //   setGenres([...genres, newGenre])
