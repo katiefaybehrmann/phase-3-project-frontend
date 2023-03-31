@@ -1,17 +1,36 @@
 import React from "react";
 import { useState } from "react";
+import UpdateRecord from "./UpdateRecord";
 
-function RecordCard({record}){
+function RecordCard({ record, onUpdateRecord }) {
     const [isEditing, setIsEditing] = useState(false)
-    const [artist, setArtist] = useState(record.artist)
-    const [release_date, setReleaseDate] = useState(record.release_date)
-    const [image_url, setImageURL] = useState(record.image_url)
-    const [listened, setListened] = useState(record.listened)
-    const [rating, setRating] = useState(record.rating)
+
+    const handleUpdateRecord = (updatedRecord) => {
+        setIsEditing(false)
+        onUpdateRecord(updatedRecord)
+    }
+
 
     return (
         <div>
             <h3>{record.artist}, {record.release_date}</h3>
+            {isEditing ? (
+                <UpdateRecord record={record} onUpdateRecord={handleUpdateRecord}/>
+            ) :
+                (
+                    <div className="actions">
+                        <button onClick={() => setIsEditing((isEditing) => !isEditing)}>
+                            <span role="img" aria-label="edit">
+                                ✏️
+                            </span>
+                        </button>
+                        <button >
+                            <span role="img" aria-label="delete">
+                                🗑
+                            </span>
+                        </button>
+                    </div>
+                )}
         </div>
     )
 }
