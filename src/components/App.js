@@ -45,6 +45,7 @@ function App() {
 
   return (
     <div>
+      <h1>DisKatie</h1>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/genres/:genre_id" element={<GenreContainer genres={genres} onAddRecord={handleAddRecord} onUpdateRecord={handleUpdateRecord} onDeleteRecord={handleDeleteRecord} />} />
