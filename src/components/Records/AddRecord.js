@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function AddRecord({ onAddRecord, displayedGenre }) {
+function AddRecord({ onAddRecord, displayedGenre, setShowForm }) {
     const [artist, setArtist] = useState("")
     const [release_date, setReleaseDate] = useState("")
     const [image_url, setImageURL] = useState("")
@@ -26,6 +26,7 @@ function AddRecord({ onAddRecord, displayedGenre }) {
             .then(r => r.json())
             .then(p => onAddRecord(p))
         clearForm();
+        setShowForm(false)
     }
 
     const clearForm = () => {
@@ -38,7 +39,7 @@ function AddRecord({ onAddRecord, displayedGenre }) {
 
     return (
         <div>
-            <h2>Add a {displayedGenre.name} Record</h2>
+            <h2>Add {displayedGenre.name} Record</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     placeholder="Artist"
